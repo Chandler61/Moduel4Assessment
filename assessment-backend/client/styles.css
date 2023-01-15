@@ -1,0 +1,28 @@
+#tryNew {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: baseline;
+	align-content: stretch;
+}
+
+#myBtn {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	align-items: baseline;
+	align-content: stretch;
+}
+
+button{
+    padding: 30px;
+    margin-top: 50px;
+    border-color: blue;
+}
+
+input{
+    margin-top: 50px;
+    border-color: yellow;
+}
