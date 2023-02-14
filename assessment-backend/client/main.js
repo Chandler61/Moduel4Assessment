@@ -6,6 +6,8 @@ const fortuneBtn = document.getElementById("fortuneButton")
 const experiment = document.getElementById("tryNew")
 const newLife = document.getElementById("newMe")
 const motivSpeaker = document.getElementById("myBtn")
+const goalsText = document.getElementById("goal")
+const btnDelete = document.getElementById("del")
 
 const getFortune = () => {
     axios.get("http://localhost:4000/api/fortune")
@@ -40,11 +42,27 @@ const goodSpeakers = () => {
 motivSpeaker.addEventListener('click', goodSpeakers)
 
 
-const yourGoals = () => {
-    axios.post("http://localhost:4000/api/fortune/update")
-        .then(res => {
-        const data = res.data;
-        alert(data);
-    });
+const yourGoals = (e) => {
+  e.preventDefault();
+  const goalsValue = goalsText.value
+  axios.post("http://localhost:4000/api/update", {goalsValue}).then(res => {
+    const {status }= res;
+    if (status === 200 ) {
+     alert("Nice, you're goal was added!")
+    } else {
+      alert("something went wrong")
+      console.error(`Status code ${status} was thrown`)
+    }
+ });
 };
-newLife.addEventListener("mouseout", yourGoals)
+newLife.addEventListener('click', yourGoals)
+
+const youDelete = () => {
+    axios.delete(`http://localhost:4000/api/fortune/update/${id}`)
+    .then(res => {
+        console.log(res.data)
+    });
+
+btnDelete.addEventListener("click", youDelete)
+
+}
